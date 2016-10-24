@@ -1,0 +1,4 @@
+requests
+unicodecsv==0.9.0
+cython
+pandas
