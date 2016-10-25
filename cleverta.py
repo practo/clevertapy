@@ -98,6 +98,13 @@ class ClevertaPy:
         csv_profiles = pandas.read_csv(csv_path, usecols=['Email'])
         profiles = json.loads(csv_profiles.to_json(orient='records'))
         clevertap_profiles = self.download_profiles(property, operator, value)
+        missing_emails = (Counter(profile['Email'] for profile in profiles) -
+                          Counter(profile['Email'] for profile in clevertap_profiles)).keys()
+        with open('missing_emails.csv', 'w') as f:
+            f.write('Email\n')
+            for email in missing_emails:
+                f.write(email+'\n')
+            f.close()
 
         return profiles, clevertap_profiles
 
