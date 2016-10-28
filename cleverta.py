@@ -32,7 +32,7 @@ class ClevertaPy:
                     'type': 'profile',
                     'ts': datetime.utcnow().strftime('%s'),
                     'profileData': {
-                        'Name': profile['Name']
+                        'Name': profile['Name'],
                         'Email': profile['Email'],
                     }
                 } for profile in profile_chunk
